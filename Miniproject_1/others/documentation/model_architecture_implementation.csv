@@ -1,0 +1,35 @@
+﻿LAYER;NUMBER;CHANNELS_OUT;FUNCTION;ATTRIBUTE;SIZE
+INPUT;;3;;;32
+ENC_CONV;0;48;Convolution;kernel_size = 3;32
+ENC_CONV;1;48;Convolution;kernel_size = 3;32
+POOL;1;48;Maxpool;2;16
+ENC_CONV;2;48;Convolution;kernel_size = 3;16
+POOL;2;48;Maxpool;2;8
+ENC_CONV;3;48;Convolution;kernel_size = 3;8
+POOL;3;48;Maxpool;2;4
+ENC_CONV;4;48;Convolution;kernel_size = 3;4
+POOL;4;48;Maxpool;2;2
+ENC_CONV;5;48;Convolution;kernel_size = 3;2
+POOL;5;48;Maxpool;2;1
+ENC_CONV;6;48;Convolution;kernel_size = 3;1
+UPSAMPLE;5;48;Upsample;2;2
+CONCAT;5;96;Concatenate; w/ POOL 4;2
+DEC_CONV;5A;96;Convolution;kernel_size = 3;2
+DEC_CONV;5B;96;Convolution;kernel_size = 3;2
+UPSAMPLE;4;96;Upsample;2;4
+CONCAT;4;144;Concatenate;w/ POOL 3;4
+DEC_CONV;4A;96;Convolution;kernel_size = 3;4
+DEC_CONV;4B;96;Convolution;kernel_size = 3;4
+UPSAMPLE;3;96;Upsample;2;8
+CONCAT;3;144;Concatenate;w/ POOL 2;8
+DEC_CONV;3A;96;Convolution;kernel_size = 3;8
+DEC_CONV;3B;96;Convolution;kernel_size = 3;8
+UPSAMPLE;2;96;Upsample;2;16
+CONCAT;2;144;Concatenate;w/ POOL 1;16
+DEC_CONV;2A;96;Convolution;kernel_size = 3;16
+DEC_CONV;2B;96;Convolution;kernel_size = 3;16
+UPSAMPLE;1;96;Upsample;2;32
+CONCAT;1;99;Concatenate;w/ INPUT;32
+DEC_CONV;1A;64;Convolution;kernel_size = 4;32
+DEC_CONV;1B;32;Convolution;kernel_size = 4;32
+DEC_CONV;1C;3;Convolution (linear act);kernel_size = 4;32
