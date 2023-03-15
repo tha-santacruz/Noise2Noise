@@ -188,8 +188,6 @@ if __name__ == '__main__':
     project_path = Path(args.project_path)
     data_path = Path(args.data_path)
 
-    if re.match(r'^Proj(_(\d{6})){3}$', project_path.name) is None:
-        warn("Project folder name must be in the form Proj_XXXXXX_XXXXXX_XXXXXX")
 
     sys.path.append(args.project_path)
     unittest.main(argv=[''], verbosity=0)

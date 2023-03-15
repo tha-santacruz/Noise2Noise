@@ -161,7 +161,7 @@ class Conv2d (object) :
 		self.stride = stride
 		self.dilation = dilation
 		## parameters initialization : from pytorch documentation
-		## see https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html
+		## see https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.htmlconvolution
 		self.k = 1/(self.in_channels*self.kernel_size[0]*self.kernel_size[1])
 		self.weight = Parameter(empty(self.out_channels,self.in_channels, self.kernel_size[0], self.kernel_size[1]).uniform_(-(self.k**0.5), self.k**0.5))
 		self.bias = Parameter(empty(self.out_channels).uniform_(-self.k, self.k))
