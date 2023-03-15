@@ -30,8 +30,6 @@ if __name__ == '__main__':
     project_path = Path(args.project_path)
     data_path = Path(args.data_path)
 
-    if re.match(r'^Proj(_(\d{6})){3}$', project_path.name) is None:
-        warn("Project folder name must be in the form Proj_XXXXXX_XXXXXX_XXXXXX")
 
     sys.path.append(args.project_path)
 
@@ -59,20 +57,3 @@ if __name__ == '__main__':
         axarr[2].set_title("Clean target")
         f.tight_layout()
         f.savefig(f"results_1/results{i}.png", bbox_inches = 'tight', pad_inches = 0)
-
-
-    """i = 10
-    f, axarr = plt.subplots(4,3)
-    axarr[0,0].imshow(input[4*i].int().cpu().detach().permute(1,2,0).numpy())
-    axarr[0,1].imshow(clean_output[4*i].cpu().detach().permute(1,2,0).numpy())
-    axarr[0,2].imshow(target[4*i].cpu().detach().permute(1,2,0).numpy())
-    axarr[1,0].imshow(input[4*i+1].cpu().detach().permute(1,2,0).numpy())
-    axarr[1,1].imshow(clean_output[4*i+1].cpu().detach().permute(1,2,0).numpy())
-    axarr[1,2].imshow(target[4*i+1].cpu().detach().permute(1,2,0).numpy())
-    axarr[2,0].imshow(input[4*i+2].cpu().detach().permute(1,2,0).numpy())
-    axarr[2,1].imshow(clean_output[4*i+2].cpu().detach().permute(1,2,0).numpy())
-    axarr[2,2].imshow(target[4*i+2].cpu().detach().permute(1,2,0).numpy())
-    axarr[3,0].imshow(input[4*i+3].cpu().detach().permute(1,2,0).numpy())
-    axarr[3,1].imshow(clean_output[4*i+3].cpu().detach().permute(1,2,0).numpy())
-    axarr[3,2].imshow(target[4*i+3].cpu().detach().permute(1,2,0).numpy())
-    plt.show()"""
