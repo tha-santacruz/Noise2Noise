@@ -20,9 +20,7 @@ def compute_psnr(x, y, max_range=1.0):
     return 20 * torch.log10(torch.tensor(max_range)) - 10 * torch.log10(((x-y) ** 2).mean((1,2,3))).mean()
 
 def train_model(lr, betas, eps, lossf, ndata, augment, batch_size, lf, bf, project_number = 1):
-    #run = wandb.init(project="noise2noise_10000_data", entity="bbk_2022", reinit=True)
-    #run.name = f"lr={lr}, betas={betas}, eps={eps}, lossf={lossf.__name__}, ndata={ndata}"
-    run = wandb.init(project="noise2noise_GAN_lf", entity="bbk_2022", reinit=True, config={
+    run = wandb.init(project="noise2noise_GAN", anonymous="must", reinit=True, config={
         "learning_rate": lr,
         "betas": betas,
         "epsilon": eps,
@@ -33,17 +31,7 @@ def train_model(lr, betas, eps, lossf, ndata, augment, batch_size, lf, bf, proje
         "loss_factor": lf,
         "blur_factor": bf,
         })
-    #run.name = f"lr={lr}, augment={augment}"
-    """ wandb.config = {
-        "learning_rate": lr,
-        "betas": betas,
-        "epsilon": eps,
-        "loss function": lossf,
-        "num_data": ndata,
-        "data_augmentation": augment,
-        "batch_size": batch_size,
-        } """
-    #criterion = lossf()
+
     num_train_sessions = 100
     Model = importlib.import_module(f"Miniproject_{project_number}.model_tuning").Model
     model = Model(lr=lr,betas=betas,eps=eps,lossf=lossf, augment=augment, batch_size=batch_size, lf=lf, bluring=bf)
@@ -82,10 +70,10 @@ def train_model(lr, betas, eps, lossf, ndata, augment, batch_size, lf, bf, proje
     run.finish()
 
 if __name__ == '__main__':
-    project_path = Path("Proj_286331_286331_286331")
+    project_path = Path("Project")
     data_path = Path("Miniproject_data")
 
-    sys.path.append("Proj_286331_286331_286331")
+    sys.path.append("Project")
     hyperparameters = {
         "lr":[0.00005],
         "betas": [(0.9, 0.99)],
