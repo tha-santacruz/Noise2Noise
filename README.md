@@ -1,7 +1,7 @@
 # Noise2Noise
- Super resolution UNET model trained with low resolution pairs only
+ Super resolution UNET model trained with low resolution pairs only.
  The two miniprojects were made in the context of the EE-559 Deep Learning course of EPFL during spring 2022.
- The model architectures are based on [[1]](#1)
+ The model architectures are based on [[1]](#1).
 ## Miniproject 1
  Contains an implementation of the reference model in pytorch, as well as model weights trained on pairs of noisy subimages for imagenet
  
