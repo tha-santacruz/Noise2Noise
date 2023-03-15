@@ -9,7 +9,7 @@
  In this project, a similar architecture is proposed without using standard pytorch modules or autograd (for educational purposes). The modules that have been recreated in this project are : Mean Squared Error loss, ReLU, Sigmoid, Nearest Neighbor Upsampling, Conv2d, Upsampling (or transpose convolution), and Sequential (allowing to stack modules). The implementation of these modules include forward, and backward pass. In adition to that, the Stochastic Gradient Descend optimizer has also been coded, with the step and zero_grad methods.
  
 ## Prediction Example
-![results7](./Miniproject_1/others/results_examples/result_1/results7.png)
+![plot](./Miniproject_1/others/results_examples/result_1/results7.png)
 
  
  ## References
