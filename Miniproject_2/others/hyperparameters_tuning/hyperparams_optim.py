@@ -21,7 +21,7 @@ def compute_psnr(x, y, max_range=1.0):
 
 def train_model(lr, ndata, bs, augment, project_number = 2):
 
-    run = wandb.init(project="noise2noise_final", entity="bbk_2022", reinit=True, config={
+    run = wandb.init(project="noise2noise", anonymous="must", reinit=True, config={
         "learning_rate": lr,
         "data_augmentation": augment,
         "batch_size": bs,
@@ -65,15 +65,10 @@ def train_model(lr, ndata, bs, augment, project_number = 2):
     run.finish()
 
 if __name__ == '__main__':
-    project_path = Path("Proj_286331_286331_286331")
+    project_path = Path("Project")
     data_path = Path("Miniproject_data")
 
-    sys.path.append("Proj_286331_286331_286331")
-    """hyperparameters = {
-        "lr":[0.001, 0.0001, 0.00005, 0.00001],
-        "batch_size":[10,100],
-        "augment": [True]}
-    num_data = 1000"""
+    sys.path.append("Project")
 
     hyperparameters = {
                     "lr":[0.01],
@@ -81,13 +76,6 @@ if __name__ == '__main__':
                     "augment": [True]}
     num_data = 50000
 
-    # First parameters set for recall
-    """ hyperparameters = {
-        "lr":[0.001,0.0001,0.00001],
-        "betas": [(0, 0,99), (0.9, 0.99),(0.9, 0.999)],
-        "eps": [1e-7, 1e-8, 1e-9],
-        "lossf": [nn.MSELoss, nn.L1Loss]} 
-    num_data = 1000 """
     for lr in hyperparameters["lr"]:
         for augment in hyperparameters["augment"]:
             for batch_size in hyperparameters["batch_size"]:
