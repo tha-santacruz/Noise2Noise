@@ -5,8 +5,6 @@ import time
 import os
 from pathlib import Path
 
-## Imports to delete : time, matplotlib.pyplot
-
 class EncConvPoolBlock(nn.Module):
     def __init__(self):
         super().__init__()
